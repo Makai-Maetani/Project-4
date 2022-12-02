@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Blog</title>
+</head>
+<body>
+   <div class="container">
+    <h1 class="mb-4">Sea World Blog &copy Makai Maetani </h1>
+    <a href="https://github.com/Makai-Maetani/Project-4.git">Github</a>
+    <a href="/articles/new" class="btn btn-success"> New Article</a>
+    <a href="https://ec2-54-215-252-165.us-west-1.compute.amazonaws.com/Project-3/build/index.html" class="btn btn-warning"> Ocean World Chat</a>
+
+    <% articles.forEach(article => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title"><%= article.title %></h4>
+                <div class="card-sbtitle text muted mb-2">
+                    <%= article.createdAt.toLocaleDateString() %>
+                </div>
+                <div class="card-text mb-2"><%= article.description %></div>
+                <a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+                <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline"> <button type="submit" class="btn btn-danger">Delete</button></form>
+            </div>
+            <%= article.title %>
+        </div>
+        <% }) %>
+
+    
+   </div>
+</body>
+</html>
